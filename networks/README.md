@@ -15,16 +15,12 @@ The code is run in three main steps: TRAINING, INFERENCE and ANALYSIS.The file s
 The file sbatch_test_inference.sh includes the lines required for performing inference and the file sbatch_test_analysis.sh the code required for performing analysis.
 
 STEP 0: Data preprocessing. Witihin the folder experiments/my_dataset you can find a preprocess.py file. This file saved the images as the format required by 
-Medical Detection Toolkit. It normalizes images between 0 and 1, splits the images intro training and testing and saves the MR images together with the masks in a single
-variable .npy. It also creates metadata information with the name of each patient and the path for each patient.
-The output of this algorithm is for example '1.npy' for patient 1. This variable has dimensions 2 x 384 x 384 x 272 (The first channel is the MR image and the second
-channel the corresponding binary mask)
-
+Medical Detection Toolkit. It normalizes images between 0 and 1, splits the images into training and testing and saves the MR images together with the masks in a single variable .npy. It also creates metadata information with the name of each patient and the path for each patient.
+The output of this algorithm is for example '1.npy' for patient 1. This variable has dimensions 2 x 384 x 384 x 272 (The first channel is the MR image and the second channel the corresponding binary mask)
 
 STEP 1: read the config.py file and modify the aspects that require appropiate (in principle only the root folder is required to be changed).
 
-STEP 2: network training. By default it performs five-fold cross-validation. It will save the five-best epochs according to the mean average precision of the validation set.
-To run the algorithm follow the lines contained in sbatch_test.sh.
+STEP 2: network training. By default it performs five-fold cross-validation. It will save the five-best epochs according to the mean average precision of the validation set. To run the algorithm follow the lines contained in sbatch_test.sh.
 
 STEP 3: network inference. Inference is performed in patches of dimensions 128 x 128 x 64. Then, they are consolidated to the world coordinates. This step generates
 the raw predictions prior to consolidation. The output of this part is the following:
