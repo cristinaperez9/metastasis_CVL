@@ -1,5 +1,5 @@
 
-Project: Segmenting brain metastases with minimal annotations for radiotherapy applications.
+# Project: Segmenting brain metastases with minimal annotations for radiotherapy applications.
 Student: Cristina Almagro Perez
 Date: 28/06/2022
 
